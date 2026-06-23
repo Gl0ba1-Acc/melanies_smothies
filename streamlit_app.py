@@ -1,6 +1,6 @@
 # Import python packages
 import streamlit as st
-from snowflake.snowpark.functions import col #call function to show just one colum
+from snowflake.snowpark.functions import col
 
 # Write directly to the app
 st.title(f"Customize your Smoothie! :cup_with_straw:")
