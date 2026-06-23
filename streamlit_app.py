@@ -24,20 +24,19 @@ ingredients_list = st.multiselect(
     max_selections=5
     )
 
+ingredients_string = ''
+
 if ingredients_list:
-    #st.write(ingredients_list)
-    #st.text(ingredients_list)
-
-    ingredients_string = ''
-
     for fruit_chossen in ingredients_list:
         ingredients_string += fruit_chossen + ' '
 
-   # st.write(ingredients_string)
 
 #Storing the Orders in Snowflake database
-my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
+if ingredients_string:
+    my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
                     values ('""" + ingredients_string + """','""" + name_on_order + """')"""
+else:
+    my_insert_stmt = ""
 
 
 st.write(my_insert_stmt)
